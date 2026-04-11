@@ -33,7 +33,7 @@ body {
   position: relative;
   background:
     linear-gradient(rgba(8, 4, 14, 0.58), rgba(8, 4, 14, 0.82)),
-    url("../images/hero-bg.png") center center / cover no-repeat fixed;
+    url("../images/hero-bg.jpg") center center / cover no-repeat fixed;
 }
 
 /* Deep atmosphere layers */
