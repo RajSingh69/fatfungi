@@ -908,4 +908,148 @@ main,
   .logo {
     font-size: 1.45rem;
   }
+
+  .text-logo {
+  display: inline-block;
 }
+
+.homepage-logo-section {
+  padding: 34px 0 18px;
+  position: relative;
+  z-index: 3;
+}
+
+.homepage-logo-image {
+  display: block;
+  width: min(240px, 80%);
+  margin: 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(255, 255, 255, 0.18));
+}
+
+.homepage-banner-section {
+  padding: 12px 0 26px;
+  position: relative;
+  z-index: 3;
+}
+
+.homepage-main-banner {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 26px;
+  object-fit: cover;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.28),
+    0 0 28px rgba(255, 170, 235, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.homepage-card-stack {
+  padding: 6px 0 90px;
+  position: relative;
+  z-index: 3;
+}
+
+.card-stack-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 1200px;
+}
+
+.homepage-link-card {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  align-items: stretch;
+  min-height: 190px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(18, 8, 28, 0.44);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.28),
+    0 0 18px rgba(255, 170, 235, 0.08);
+  backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.homepage-link-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.34),
+    0 0 30px rgba(141, 243, 255, 0.10),
+    0 0 30px rgba(255, 170, 235, 0.10);
+}
+
+.card-side-image-wrap {
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.card-side-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card-middle-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 28px;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow:
+    0 0 18px rgba(255, 170, 235, 0.22),
+    0 0 24px rgba(141, 243, 255, 0.14);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.07)),
+    rgba(18, 8, 28, 0.22);
+}
+
+@media (max-width: 980px) {
+  .homepage-link-card {
+    grid-template-columns: 160px 1fr 160px;
+    min-height: 150px;
+  }
+
+  .card-side-image-wrap {
+    min-height: 150px;
+  }
+
+  .card-middle-text {
+    font-size: clamp(1.4rem, 4vw, 2.6rem);
+    padding: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .homepage-link-card {
+    grid-template-columns: 1fr;
+  }
+
+  .card-side-image-wrap {
+    min-height: 180px;
+  }
+
+  .card-middle-text {
+    min-height: 110px;
+    font-size: 1.7rem;
+  }
+
+
+  
+}
+
+
+
