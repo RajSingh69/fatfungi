@@ -23,7 +23,9 @@
       z-index: 2;
     }
 
-    .spore-field {
+    .spore-field,
+    .spark-field,
+    .flash-field {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -33,29 +35,69 @@
 
     .spore {
       position: absolute;
-      bottom: -40px;
-      width: 7px;
-      height: 7px;
+      bottom: -60px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      opacity: 0.22;
-      background: radial-gradient(
-        circle at 35% 35%,
-        rgba(255, 255, 255, 0.95),
-        rgba(170, 255, 198, 0.42) 50%,
-        rgba(170, 255, 198, 0) 76%
-      );
+      opacity: 0.24;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(170,255,198,0.45) 52%, rgba(170,255,198,0) 76%);
       box-shadow:
-        0 0 10px rgba(170, 255, 198, 0.16),
-        0 0 18px rgba(117, 255, 241, 0.05);
+        0 0 12px rgba(170,255,198,0.2),
+        0 0 28px rgba(117,255,241,0.08);
       animation: floatSpore linear infinite;
     }
 
     .spore::after {
       content: "";
       position: absolute;
-      inset: -5px;
+      inset: -6px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.035);
+    }
+
+    .spark {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      box-shadow:
+        0 0 10px rgba(255,255,255,0.55),
+        0 0 20px rgba(156,255,186,0.22);
+      animation: twinkle linear infinite;
+      opacity: 0;
+    }
+
+    .flash {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0;
+      mix-blend-mode: screen;
+      animation: pulseFlash 7s ease-in-out infinite;
+    }
+
+    .flash-one {
+      top: 12%;
+      left: 8%;
+      background: rgba(120, 255, 196, 0.08);
+    }
+
+    .flash-two {
+      top: 38%;
+      right: 10%;
+      background: rgba(255, 120, 229, 0.08);
+      animation-delay: 2s;
+    }
+
+    .flash-three {
+      bottom: 12%;
+      left: 24%;
+      background: rgba(112, 178, 255, 0.08);
+      animation-delay: 4s;
     }
 
     .section-kicker {
@@ -63,13 +105,14 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(141, 255, 156, 0.1);
-      border: 1px solid rgba(141, 255, 156, 0.16);
+      background: rgba(141,255,156,0.1);
+      border: 1px solid rgba(141,255,156,0.18);
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(245, 255, 247, 0.84);
+      color: rgba(245,255,247,0.84);
+      box-shadow: 0 0 18px rgba(141,255,156,0.08);
     }
 
     .glass-panel,
@@ -77,15 +120,35 @@
     .simple-card,
     .feature-card,
     .trust-card,
-    .cta-card {
+    .cta-card,
+    .featured-product-card {
       position: relative;
       overflow: hidden;
       border-radius: 24px;
       background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
-        linear-gradient(180deg, rgba(14, 24, 18, 0.94), rgba(7, 13, 10, 0.92));
-      border: 1px solid rgba(170, 255, 198, 0.13);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        linear-gradient(180deg, rgba(14,24,18,0.94), rgba(7,13,10,0.92));
+      border: 1px solid rgba(170,255,198,0.13);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.3),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .glass-panel::before,
+    .hero-card::before,
+    .simple-card::before,
+    .feature-card::before,
+    .trust-card::before,
+    .cta-card::before,
+    .featured-product-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(141,255,156,0.08), transparent 26%),
+        radial-gradient(circle at 86% 78%, rgba(117,255,241,0.06), transparent 24%),
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.025) 48%, transparent 100%);
+      pointer-events: none;
     }
 
     .top-brand-section,
@@ -93,6 +156,7 @@
     .intro-section,
     .featured-section,
     .homepage-card-stack,
+    .products-showcase-section,
     .trust-section,
     .cta-section {
       padding: 18px 0;
@@ -111,14 +175,17 @@
       padding: 12px;
       display: flex;
       justify-content: center;
+      animation: softFloat 7s ease-in-out infinite;
     }
 
     .top-logo-box img {
       width: 100%;
       max-width: 140px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 12px 32px rgba(0,0,0,0.2),
+        0 0 22px rgba(141,255,156,0.08);
       display: block;
     }
 
@@ -126,6 +193,7 @@
       width: 100%;
       max-width: 1040px;
       padding: 12px;
+      animation: glowPulse 6s ease-in-out infinite;
     }
 
     .top-banner-box img {
@@ -133,19 +201,21 @@
       height: auto;
       display: block;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.08);
       object-fit: contain;
+      box-shadow: 0 0 28px rgba(117,255,241,0.06);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 18px;
       align-items: stretch;
     }
 
     .hero-card {
       padding: 30px 28px;
+      animation: fadeLift 0.9s ease both;
     }
 
     .hero-title {
@@ -158,18 +228,24 @@
     .hero-title span {
       display: block;
       color: #9cffba;
-      text-shadow: 0 0 18px rgba(141, 255, 156, 0.14);
+      text-shadow:
+        0 0 10px rgba(141,255,156,0.18),
+        0 0 24px rgba(141,255,156,0.08);
     }
 
     .hero-card p,
     .simple-card p,
+    .intro-card p,
     .feature-card p,
     .trust-card p,
     .cta-card p,
-    .categories-heading p {
+    .categories-heading p,
+    .featured-products-heading p,
+    .featured-product-card p {
       margin: 0;
-      color: rgba(245, 255, 247, 0.76);
+      color: rgba(245,255,247,0.76);
       font-size: 0.96rem;
+      line-height: 1.55;
     }
 
     .hero-card p + p {
@@ -194,18 +270,37 @@
       font-weight: 800;
       letter-spacing: 0.04em;
       transition: 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-btn::after,
+    .hero-btn-alt::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.18) 50%, transparent 80%);
+      transform: translateX(-120%);
+      transition: transform 0.55s ease;
+    }
+
+    .hero-btn:hover::after,
+    .hero-btn-alt:hover::after {
+      transform: translateX(120%);
     }
 
     .hero-btn {
       background: linear-gradient(180deg, #a4ffaf, #7dff90);
       color: #071009;
-      box-shadow: 0 12px 24px rgba(125, 255, 144, 0.18);
+      box-shadow:
+        0 12px 24px rgba(125,255,144,0.18),
+        0 0 20px rgba(125,255,144,0.12);
     }
 
     .hero-btn-alt {
       color: #f5fff7;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .hero-btn:hover,
@@ -221,22 +316,31 @@
     .simple-card {
       padding: 22px 20px;
       min-height: 160px;
+      animation: fadeLift 1s ease both;
+    }
+
+    .simple-card:nth-child(2) {
+      animation-delay: 0.12s;
     }
 
     .simple-card h3 {
       margin: 12px 0 8px;
       font-size: 1.16rem;
-      line-height: 1.06;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      color: #f5fff7;
     }
 
     .intro-card {
       padding: 26px 28px;
       text-align: center;
+      animation: fadeLift 1s ease both;
     }
 
     .intro-card h2,
     .featured-heading h2,
     .categories-heading h2,
+    .featured-products-heading h2,
     .cta-card h2 {
       margin: 12px 0 10px;
       font-size: clamp(1.7rem, 3vw, 2.6rem);
@@ -244,7 +348,8 @@
     }
 
     .featured-heading,
-    .categories-heading {
+    .categories-heading,
+    .featured-products-heading {
       text-align: center;
       margin-bottom: 16px;
     }
@@ -257,6 +362,15 @@
 
     .feature-card {
       padding: 16px;
+      animation: fadeLift 0.85s ease both;
+    }
+
+    .feature-card:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .feature-card:nth-child(3) {
+      animation-delay: 0.16s;
     }
 
     .feature-card img {
@@ -264,21 +378,31 @@
       height: 180px;
       object-fit: cover;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 14px;
       display: block;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .feature-card strong {
+    .feature-card:hover img,
+    .featured-product-card:hover img {
+      transform: scale(1.04);
+      box-shadow: 0 0 24px rgba(141,255,156,0.1);
+    }
+
+    .feature-card strong,
+    .featured-product-card h3 {
       display: block;
       margin-bottom: 8px;
       font-size: 1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #f5fff7;
+      line-height: 1.35;
     }
 
-    .feature-card a {
+    .feature-card a,
+    .featured-product-card a.product-link {
       display: inline-flex;
       margin-top: 14px;
       color: #9cffba;
@@ -300,6 +424,18 @@
       gap: 14px;
       padding: 12px;
       border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .homepage-link-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(141,255,156,0.03) 30%, transparent 60%, rgba(117,255,241,0.03) 100%);
+      pointer-events: none;
+      animation: shimmerSweep 8s linear infinite;
     }
 
     .card-side-image-wrap {
@@ -309,18 +445,84 @@
 
     .card-middle-text {
       min-height: 106px;
-      padding: 14px 16px;
+      padding: 16px 22px;
       font-size: clamp(0.95rem, 1.8vw, 1.25rem);
       letter-spacing: 0.14em;
       border-radius: 18px;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .card-middle-text strong {
+      display: block;
+      font-size: clamp(1.1rem, 2vw, 1.8rem);
+      letter-spacing: 0.14em;
+      line-height: 1.1;
     }
 
     .card-middle-text small {
       display: block;
-      margin-top: 8px;
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
-      color: rgba(245, 255, 247, 0.58);
+      margin-top: 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: none;
+      color: rgba(245,255,247,0.68);
+      line-height: 1.45;
+      max-width: 780px;
+    }
+
+    .products-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .featured-product-card {
+      padding: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeLift 0.85s ease both;
+    }
+
+    .featured-product-card:nth-child(2) {
+      animation-delay: 0.06s;
+    }
+
+    .featured-product-card:nth-child(3) {
+      animation-delay: 0.12s;
+    }
+
+    .featured-product-card:nth-child(4) {
+      animation-delay: 0.18s;
+    }
+
+    .featured-product-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 24px 60px rgba(0,0,0,0.34),
+        0 0 24px rgba(141,255,156,0.08);
+    }
+
+    .featured-product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 14px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .product-price {
+      margin-top: 10px;
+      color: #a8ffc5;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 0.96rem;
     }
 
     .trust-grid {
@@ -332,6 +534,7 @@
     .trust-card {
       padding: 22px 20px;
       text-align: center;
+      animation: fadeLift 0.85s ease both;
     }
 
     .trust-card h3 {
@@ -339,6 +542,7 @@
       font-size: 1.02rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      line-height: 1.35;
     }
 
     .cta-grid {
@@ -349,6 +553,7 @@
 
     .cta-card {
       padding: 26px 24px;
+      animation: fadeLift 0.9s ease both;
     }
 
     .footer-lite {
@@ -358,21 +563,97 @@
 
     .footer-lite p {
       margin: 0;
-      color: rgba(245, 255, 247, 0.58);
+      color: rgba(245,255,247,0.58);
       font-size: 0.9rem;
     }
 
     @keyframes floatSpore {
       0% {
-        transform: translate3d(0, 0, 0) scale(0.8);
+        transform: translate3d(0,0,0) scale(0.8);
         opacity: 0;
       }
       10% {
         opacity: 0.28;
       }
       100% {
-        transform: translate3d(var(--drift, 0px), -115vh, 0) scale(1.1);
+        transform: translate3d(var(--drift, 0px), -115vh, 0) scale(1.12);
         opacity: 0;
+      }
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      30% {
+        opacity: 0.45;
+        transform: scale(1);
+      }
+      60% {
+        opacity: 0.2;
+        transform: scale(0.8);
+      }
+    }
+
+    @keyframes pulseFlash {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      35% {
+        opacity: 0.16;
+        transform: scale(1.06);
+      }
+      60% {
+        opacity: 0.05;
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 0 0 rgba(117,255,241,0);
+      }
+      50% {
+        transform: translateY(-2px);
+        box-shadow: 0 0 28px rgba(117,255,241,0.08);
+      }
+    }
+
+    @keyframes softFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes fadeLift {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shimmerSweep {
+      0% {
+        transform: translateX(-25%);
+      }
+      100% {
+        transform: translateX(25%);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .products-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -389,17 +670,33 @@
       .hero-grid,
       .featured-grid,
       .trust-grid,
-      .cta-grid {
+      .cta-grid,
+      .products-showcase-grid {
         grid-template-columns: 1fr;
       }
 
       .homepage-link-card {
         grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .card-side-image-wrap,
       .card-middle-text {
         min-height: 120px;
+      }
+
+      .card-middle-text {
+        text-align: center;
+        padding: 18px;
+      }
+
+      .card-middle-text small {
+        max-width: 100%;
+      }
+
+      .feature-card img,
+      .featured-product-card img {
+        height: 220px;
       }
     }
 
@@ -425,23 +722,87 @@
         font-size: clamp(1.8rem, 9vw, 2.8rem);
       }
 
-      .feature-card img {
-        height: 170px;
+      .featured-heading h2,
+      .categories-heading h2,
+      .featured-products-heading h2,
+      .cta-card h2,
+      .intro-card h2 {
+        font-size: clamp(1.45rem, 7vw, 2.15rem);
+      }
+
+      .feature-card img,
+      .featured-product-card img {
+        height: 190px;
+      }
+
+      .card-middle-text strong {
+        font-size: 1.05rem;
+        letter-spacing: 0.1em;
+      }
+
+      .card-middle-text small {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spore,
+      .spark,
+      .flash,
+      .top-logo-box,
+      .top-banner-box,
+      .hero-card,
+      .simple-card,
+      .intro-card,
+      .feature-card,
+      .featured-product-card,
+      .trust-card,
+      .cta-card,
+      .homepage-link-card::before {
+        animation: none !important;
+      }
+
+      .hero-btn::after,
+      .hero-btn-alt::after {
+        display: none;
       }
     }
   </style>
 </head>
 <body class="homepage-shell">
   <div class="spore-field" aria-hidden="true">
-    <span class="spore" style="left:5%; animation-duration:16s; animation-delay:-2s; --drift:14px;"></span>
-    <span class="spore" style="left:12%; animation-duration:19s; animation-delay:-8s; --drift:-16px;"></span>
-    <span class="spore" style="left:20%; animation-duration:17s; animation-delay:-4s; --drift:18px;"></span>
-    <span class="spore" style="left:31%; animation-duration:22s; animation-delay:-10s; --drift:-15px;"></span>
-    <span class="spore" style="left:43%; animation-duration:18s; animation-delay:-6s; --drift:16px;"></span>
-    <span class="spore" style="left:56%; animation-duration:23s; animation-delay:-12s; --drift:-18px;"></span>
-    <span class="spore" style="left:68%; animation-duration:17s; animation-delay:-5s; --drift:14px;"></span>
-    <span class="spore" style="left:79%; animation-duration:20s; animation-delay:-9s; --drift:-14px;"></span>
-    <span class="spore" style="left:91%; animation-duration:18s; animation-delay:-3s; --drift:12px;"></span>
+    <span class="spore" style="left:4%; animation-duration:16s; animation-delay:-2s; --drift:16px;"></span>
+    <span class="spore" style="left:9%; animation-duration:19s; animation-delay:-8s; --drift:-18px;"></span>
+    <span class="spore" style="left:14%; animation-duration:17s; animation-delay:-4s; --drift:22px;"></span>
+    <span class="spore" style="left:21%; animation-duration:20s; animation-delay:-11s; --drift:-16px;"></span>
+    <span class="spore" style="left:28%; animation-duration:18s; animation-delay:-6s; --drift:19px;"></span>
+    <span class="spore" style="left:36%; animation-duration:23s; animation-delay:-9s; --drift:-20px;"></span>
+    <span class="spore" style="left:44%; animation-duration:17s; animation-delay:-3s; --drift:14px;"></span>
+    <span class="spore" style="left:52%; animation-duration:21s; animation-delay:-12s; --drift:-14px;"></span>
+    <span class="spore" style="left:60%; animation-duration:18s; animation-delay:-5s; --drift:17px;"></span>
+    <span class="spore" style="left:68%; animation-duration:24s; animation-delay:-10s; --drift:-21px;"></span>
+    <span class="spore" style="left:76%; animation-duration:17s; animation-delay:-7s; --drift:12px;"></span>
+    <span class="spore" style="left:84%; animation-duration:20s; animation-delay:-13s; --drift:-15px;"></span>
+    <span class="spore" style="left:92%; animation-duration:18s; animation-delay:-4s; --drift:13px;"></span>
+  </div>
+
+  <div class="spark-field" aria-hidden="true">
+    <span class="spark" style="left:6%; top:18%; animation-duration:5s; animation-delay:-1s;"></span>
+    <span class="spark" style="left:15%; top:42%; animation-duration:6.5s; animation-delay:-2s;"></span>
+    <span class="spark" style="left:24%; top:68%; animation-duration:4.8s; animation-delay:-3s;"></span>
+    <span class="spark" style="left:34%; top:22%; animation-duration:6s; animation-delay:-1.6s;"></span>
+    <span class="spark" style="left:45%; top:57%; animation-duration:5.2s; animation-delay:-2.4s;"></span>
+    <span class="spark" style="left:57%; top:14%; animation-duration:7s; animation-delay:-3.2s;"></span>
+    <span class="spark" style="left:66%; top:39%; animation-duration:4.7s; animation-delay:-1.4s;"></span>
+    <span class="spark" style="left:75%; top:73%; animation-duration:5.8s; animation-delay:-2.9s;"></span>
+    <span class="spark" style="left:87%; top:27%; animation-duration:6.8s; animation-delay:-4.1s;"></span>
+  </div>
+
+  <div class="flash-field" aria-hidden="true">
+    <span class="flash flash-one"></span>
+    <span class="flash flash-two"></span>
+    <span class="flash flash-three"></span>
   </div>
 
   <div class="bg-orb orb-1"></div>
@@ -492,11 +853,11 @@
             <span class="section-kicker">Premium mushroom cultivation gear</span>
             <h1 class="hero-title">
               Grow simple.
-              <span>Shop easy.</span>
+              <span>Shop trippy.</span>
             </h1>
             <p>
-              FatFungi is built to feel cleaner, calmer and easier for newcomers while still keeping the
-              premium hazy vibe.
+              FatFungi is built to feel cleaner, calmer and easier for newcomers while still keeping the hazy,
+              premium, slightly unhinged mushroom-lab vibe.
             </p>
             <p>
               Start with a kit, grab spores, restock sterile grain, or build out your setup with substrates
@@ -534,10 +895,10 @@
       <div class="container">
         <div class="glass-panel intro-card">
           <span class="section-kicker">Welcome to FatFungi</span>
-          <h2>A simpler flow with the brand right at the top.</h2>
+          <h2>A cleaner homepage flow with way more atmosphere.</h2>
           <p>
-            Small centered logo first. Full banner underneath. Then a clean intro into the shop. Much easier
-            on the eyes and much better for first-time visitors.
+            Small logo first. Full banner underneath. A clear intro. Clean category cards. More glow, more spores,
+            more trippy motion, and a proper featured products section sitting under the shop cards.
           </p>
         </div>
       </div>
@@ -596,8 +957,8 @@
               <img src="images/aiokOne.jpg" alt="All In One Kits Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              ALL IN ONE KITS
-              <small>Simple, clean and beginner-friendly.</small>
+              <strong>ALL IN ONE KITS</strong>
+              <small>Simple, clean and beginner-friendly. A smooth starting point for first grows and low-chaos setups.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/aiokTwo.jpg" alt="All In One Kits Right" class="card-side-image" />
@@ -609,8 +970,8 @@
               <img src="images/ssOne.jpg" alt="Spore Syringes Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              SPORE SYRINGES
-              <small>For genetics, experimentation and next-step growing.</small>
+              <strong>SPORE SYRINGES</strong>
+              <small>For genetics, experimentation and next-step growing. Clean stock for people building beyond the basics.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/ssTwo.jpg" alt="Spore Syringes Right" class="card-side-image" />
@@ -622,8 +983,8 @@
               <img src="images/fibkOne.jpg" alt="Fruit In Bag Kits Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              FRUIT IN BAG KITS
-              <small>Contained, convenient and built for a smoother route.</small>
+              <strong>FRUIT IN BAG KITS</strong>
+              <small>Contained, convenient and built for a smoother route. Nice for growers who want simplicity with a bit more fun.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/fibkTwo.jpg" alt="Fruit In Bag Kits Right" class="card-side-image" />
@@ -635,8 +996,8 @@
               <img src="images/sgOne.jpg" alt="Sterile Grain Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              STERILE GRAIN
-              <small>Dependable grain for stronger runs and cleaner inoculations.</small>
+              <strong>STERILE GRAIN</strong>
+              <small>Dependable grain for stronger runs and cleaner inoculations. A staple for growers who already know the drill.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/sgOne.jpg" alt="Sterile Grain Right" class="card-side-image" />
@@ -648,8 +1009,8 @@
               <img src="images/pfTekOne.jpg" alt="PF Tek Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              PF TEK
-              <small>Classic, simple and still a favourite for many growers.</small>
+              <strong>PF TEK</strong>
+              <small>Classic, simple and still a favourite for many growers. A proper old-school route that still holds up.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/pfTekOne.jpg" alt="PF Tek Right" class="card-side-image" />
@@ -661,8 +1022,8 @@
               <img src="images/sterSubOne.jpg" alt="Sterile Substrates Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              STERILE SUBSTRATES
-              <small>Substrate options for clean fruiting setups and smoother grows.</small>
+              <strong>STERILE SUBSTRATES</strong>
+              <small>Substrate options for clean fruiting setups and smoother grows. Built for cleaner prep and less messing about.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/sterSubOne.jpg" alt="Sterile Substrates Right" class="card-side-image" />
@@ -674,8 +1035,8 @@
               <img src="images/csOne.jpg" alt="Cultivation Supplies Left" class="card-side-image" />
             </div>
             <div class="card-middle-text">
-              CULTIVATION SUPPLIES
-              <small>Support gear, add-ons and the extras that complete the setup.</small>
+              <strong>CULTIVATION SUPPLIES</strong>
+              <small>Support gear, add-ons and the extras that complete the setup. The practical bits that keep everything flowing.</small>
             </div>
             <div class="card-side-image-wrap">
               <img src="images/csOne.jpg" alt="Cultivation Supplies Right" class="card-side-image" />
@@ -685,25 +1046,71 @@
       </div>
     </section>
 
+    <section class="products-showcase-section">
+      <div class="container">
+        <div class="featured-products-heading">
+          <span class="section-kicker">Featured products</span>
+          <h2>Favourite picks from the shelf.</h2>
+          <p>
+            A few standout bits from across the store to break up the page and make the homepage feel more alive.
+          </p>
+        </div>
+
+        <div class="products-showcase-grid">
+          <article class="featured-product-card">
+            <img src="images/sgOne.jpg" alt="Rye grain kit product" />
+            <h3>Rye Grain Kit</h3>
+            <p>Hydrated and sterile grow bags for cleaner starts and smoother grain work.</p>
+            <div class="product-price">£8.99 – £18.50</div>
+            <a href="grain-spawn.html" class="product-link">View product</a>
+          </article>
+
+          <article class="featured-product-card">
+            <img src="images/aiokOne.jpg" alt="All in one kit product" />
+            <h3>All In One Kits</h3>
+            <p>Multiple size options with rye grain and CVG substrate for easy, low-chaos growing.</p>
+            <div class="product-price">£11.99 – £17.60</div>
+            <a href="all-in-one-kits.html" class="product-link">View product</a>
+          </article>
+
+          <article class="featured-product-card">
+            <img src="images/fibkOne.jpg" alt="Fruit in bag mushroom growing kit" />
+            <h3>Fruit In Bag Kit</h3>
+            <p>Convenient fruiting setup for growers who want a simpler contained route.</p>
+            <div class="product-price">£17.99</div>
+            <a href="fruit-in-bag-kits.html" class="product-link">View product</a>
+          </article>
+
+          <article class="featured-product-card">
+            <img src="images/csOne.jpg" alt="Cultivation supplies product" />
+            <h3>Cultivation Essentials</h3>
+            <p>Useful extras and support gear to round out the setup and keep things moving.</p>
+            <div class="product-price">From £9.99</div>
+            <a href="cultivation-supplies.html" class="product-link">View product</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="trust-section">
       <div class="container">
         <div class="trust-grid">
           <div class="trust-card">
+            <span class="section-kicker">Mobile-ready</span>
+            <h3>Cleaner on phones</h3>
+            <p>The cards, featured products and text stack properly now and stay readable on smaller screens.</p>
+          </div>
+
+          <div class="trust-card">
             <span class="section-kicker">Clearer</span>
-            <h3>Easier on the eyes</h3>
-            <p>Less chaos at the top, better spacing and a calmer first impression.</p>
+            <h3>Better card text flow</h3>
+            <p>The headings and descriptions inside the category cards are cleaner, more balanced and easier to scan.</p>
           </div>
 
           <div class="trust-card">
-            <span class="section-kicker">Simpler</span>
-            <h3>Better for newcomers</h3>
-            <p>Brand first, quick intro second, products after. Much easier for first-time visitors.</p>
-          </div>
-
-          <div class="trust-card">
-            <span class="section-kicker">Stronger</span>
-            <h3>Proper landing page flow</h3>
-            <p>It now feels like a real homepage rather than everything competing at the top.</p>
+            <span class="section-kicker">Trippier</span>
+            <h3>More glow and motion</h3>
+            <p>Extra spores, shimmer sweeps, sparkles, fading light pulses and stronger visual atmosphere across the page.</p>
           </div>
         </div>
       </div>
