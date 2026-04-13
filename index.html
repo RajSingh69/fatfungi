@@ -32,16 +32,15 @@
 
     .spore {
       position: absolute;
-      bottom: -50px;
-      width: 8px;
-      height: 8px;
+      bottom: -40px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      opacity: 0.3;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255,255,255,.95), rgba(171,255,197,.45) 48%, rgba(171,255,197,0) 74%);
+      opacity: 0.24;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.95), rgba(170,255,198,.45) 50%, rgba(170,255,198,0) 76%);
       box-shadow:
-        0 0 12px rgba(171,255,197,.22),
-        0 0 24px rgba(117,255,241,.08);
+        0 0 10px rgba(170,255,198,.18),
+        0 0 18px rgba(117,255,241,.06);
       animation: floatSpore linear infinite;
     }
 
@@ -50,41 +49,24 @@
       position: absolute;
       inset: -5px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.03);
     }
 
+    .top-brand-section,
     .hero-section,
-    .mini-brand-section,
-    .intro-strip-section,
-    .categories-section,
-    .why-section,
+    .collections-intro-section,
     .featured-section,
-    .steps-section,
+    .homepage-card-stack,
+    .trust-section,
     .closing-section {
       padding: 18px 0;
     }
 
-    .hero-grid,
-    .featured-grid,
-    .why-grid,
-    .steps-grid,
-    .closing-grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .hero-grid {
-      grid-template-columns: 1.08fr 0.92fr;
-      align-items: stretch;
-    }
-
-    .hero-panel,
     .glass-panel,
-    .category-panel,
+    .hero-panel,
     .feature-card,
-    .step-card,
-    .closing-card,
-    .brand-strip {
+    .trust-panel,
+    .closing-card {
       position: relative;
       overflow: hidden;
       border-radius: 26px;
@@ -92,18 +74,9 @@
         linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)),
         linear-gradient(180deg, rgba(14,24,18,.94), rgba(7,13,10,.92));
       border: 1px solid rgba(170,255,198,.13);
-      box-shadow: 0 20px 60px rgba(0,0,0,.32);
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
 
-    .hero-copy {
-      padding: 34px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 100%;
-    }
-
-    .hero-kicker,
     .section-kicker {
       display: inline-flex;
       width: fit-content;
@@ -111,42 +84,100 @@
       border-radius: 999px;
       background: rgba(141,255,156,.1);
       border: 1px solid rgba(141,255,156,.16);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(245,255,247,.84);
     }
 
-    .hero-kicker {
-      margin-bottom: 16px;
+    .top-brand-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .top-logo-box {
+      padding: 14px;
+      width: 100%;
+      max-width: 220px;
+    }
+
+    .top-logo-box img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 14px 36px rgba(0,0,0,.22);
+    }
+
+    .top-banner-box {
+      width: 100%;
+      max-width: 980px;
+      padding: 12px;
+    }
+
+    .top-banner-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      display: block;
+    }
+
+    .hero-section {
+      padding-top: 8px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 30px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
     }
 
     .hero-title {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 4.4vw, 4.2rem);
-      line-height: 0.95;
+      margin: 14px 0 12px;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 0.96;
       letter-spacing: -0.04em;
     }
 
     .hero-title span {
       display: block;
       color: #9cffba;
-      text-shadow: 0 0 20px rgba(141,255,156,.16);
+      text-shadow: 0 0 18px rgba(141,255,156,.14);
     }
 
-    .hero-copy p {
-      margin: 0 0 12px;
-      max-width: 620px;
-      color: rgba(245,255,247,.78);
-      font-size: 0.98rem;
+    .hero-copy p,
+    .collections-intro-card p,
+    .feature-card p,
+    .trust-panel p,
+    .closing-card p,
+    .categories-heading p {
+      margin: 0;
+      color: rgba(245,255,247,.76);
+      font-size: 0.96rem;
+    }
+
+    .hero-copy p + p {
+      margin-top: 12px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 18px;
     }
 
     .hero-btn,
@@ -165,12 +196,7 @@
     .hero-btn {
       background: linear-gradient(180deg, #a4ffaf, #7dff90);
       color: #071009;
-      box-shadow: 0 12px 24px rgba(125,255,144,.2);
-    }
-
-    .hero-btn:hover,
-    .hero-btn-alt:hover {
-      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(125,255,144,.18);
     }
 
     .hero-btn-alt {
@@ -179,181 +205,76 @@
       border: 1px solid rgba(255,255,255,.08);
     }
 
-    .hero-visual {
-      padding: 14px;
-      display: flex;
-      align-items: stretch;
+    .hero-btn:hover,
+    .hero-btn-alt:hover {
+      transform: translateY(-2px);
     }
 
-    .hero-visual-inner {
-      width: 100%;
-      min-height: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .hero-visual-inner img {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-visual-badge {
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(7,12,9,.72);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,.08);
-      max-width: 240px;
-    }
-
-    .hero-visual-badge strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.86rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #9cffba;
-    }
-
-    .hero-visual-badge span {
-      color: rgba(245,255,247,.76);
-      font-size: 0.9rem;
-    }
-
-    .mini-brand-wrap {
+    .hero-side-stack {
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 20px;
-      align-items: stretch;
+      gap: 18px;
     }
 
-    .brand-logo-box {
-      padding: 18px;
+    .mini-info-card {
+      padding: 22px 20px;
+      min-height: 140px;
     }
 
-    .brand-logo-box img {
-      width: 100%;
-      max-width: 240px;
-      margin: 0 auto;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 16px 42px rgba(0,0,0,.22);
+    .mini-info-card h3 {
+      margin: 12px 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.05;
     }
 
-    .brand-strip {
-      padding: 22px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .brand-strip h2,
-    .glass-panel h2,
-    .featured-heading h2,
-    .closing-card h2 {
-      margin: 10px 0 10px;
-      font-size: clamp(1.5rem, 2.8vw, 2.5rem);
-      line-height: 1.04;
-    }
-
-    .brand-strip p,
-    .glass-panel p,
-    .feature-card p,
-    .step-card p,
-    .closing-card p,
-    .featured-heading p {
+    .mini-info-card p {
       margin: 0;
-      color: rgba(245,255,247,.76);
-      font-size: 0.96rem;
-    }
-
-    .glass-panel {
-      padding: 26px;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 20px;
-    }
-
-    .intro-points {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .intro-point {
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.06);
-    }
-
-    .intro-point strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.88rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9cffba;
-    }
-
-    .intro-point span {
       color: rgba(245,255,247,.72);
       font-size: 0.93rem;
     }
 
-    .intro-banner-box {
-      display: flex;
-      align-items: stretch;
-      padding: 14px;
+    .collections-intro-card {
+      padding: 26px 28px;
+      text-align: center;
     }
 
-    .intro-banner-box img {
-      width: 100%;
-      height: 100%;
-      min-height: 250px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
+    .collections-intro-card h2,
+    .featured-heading h2,
+    .categories-heading h2,
+    .closing-card h2 {
+      margin: 12px 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.04;
     }
 
-    .featured-heading {
+    .featured-heading,
+    .categories-heading {
       text-align: center;
       margin-bottom: 16px;
     }
 
     .featured-grid {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     .feature-card {
-      padding: 18px;
+      padding: 16px;
     }
 
     .feature-card img {
       width: 100%;
-      height: 190px;
+      height: 180px;
       object-fit: cover;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.08);
       margin-bottom: 14px;
+      display: block;
     }
 
     .feature-card strong {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-size: 1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -364,129 +285,81 @@
       display: inline-flex;
       margin-top: 14px;
       color: #9cffba;
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .categories-wrap {
+    .card-stack-wrap {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .categories-heading {
-      text-align: center;
-      margin-bottom: 2px;
+      margin-bottom: 14px;
     }
 
-    .categories-heading h2 {
-      margin: 10px 0 10px;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
+    .homepage-link-card {
+      min-height: 132px;
+      grid-template-columns: 130px 1fr 130px;
+      gap: 14px;
+      padding: 12px;
+      border-radius: 24px;
     }
 
-    .categories-heading p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: rgba(245,255,247,.76);
+    .card-side-image-wrap {
+      min-height: 106px;
+      border-radius: 16px;
     }
 
-    .category-panel {
-      display: grid;
-      grid-template-columns: 150px 1fr 150px;
-      gap: 16px;
-      align-items: center;
-      padding: 14px;
-      min-height: 146px;
-      transition: 0.28s ease;
-    }
-
-    .category-panel:hover {
-      transform: translateY(-3px);
-      border-color: rgba(141,255,156,.24);
-      box-shadow:
-        0 0 0 1px rgba(141,255,156,.06) inset,
-        0 18px 40px rgba(0,0,0,.32),
-        0 0 30px rgba(141,255,156,.08);
-    }
-
-    .category-image {
-      height: 116px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .category-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.35s ease;
-    }
-
-    .category-panel:hover .category-image img {
-      transform: scale(1.05);
-    }
-
-    .category-copy {
-      min-height: 116px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 16px 18px;
-      text-align: center;
-    }
-
-    .category-copy strong {
-      display: block;
-      font-size: clamp(1rem, 2vw, 1.45rem);
+    .card-middle-text {
+      min-height: 106px;
+      padding: 14px 16px;
+      font-size: clamp(0.95rem, 1.8vw, 1.25rem);
       letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: #f5fff7;
+      border-radius: 18px;
     }
 
-    .category-copy span {
-      max-width: 520px;
-      color: rgba(245,255,247,.7);
-      font-size: 0.92rem;
+    .card-middle-text small {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      color: rgba(245,255,247,.58);
     }
 
-    .why-grid {
-      grid-template-columns: repeat(4, 1fr);
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .step-card,
-    .closing-card {
-      padding: 22px;
+    .trust-panel {
+      padding: 22px 20px;
+      text-align: center;
     }
 
-    .step-card strong {
-      display: inline-block;
-      margin-bottom: 8px;
-      color: #9cffba;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .step-card h3,
-    .closing-card h3 {
-      margin: 0 0 8px;
+    .trust-panel h3 {
+      margin: 12px 0 8px;
       font-size: 1.02rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .closing-grid {
+      display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .closing-card {
+      padding: 26px 24px;
     }
 
     .footer-lite {
-      padding: 26px 0 46px;
+      padding: 18px 0 42px;
       text-align: center;
     }
 
@@ -502,63 +375,56 @@
         opacity: 0;
       }
       10% {
-        opacity: .34;
+        opacity: .28;
       }
       100% {
-        transform: translate3d(var(--drift, 0px), -115vh, 0) scale(1.12);
+        transform: translate3d(var(--drift, 0px), -115vh, 0) scale(1.1);
         opacity: 0;
       }
     }
 
-    @media (max-width: 1120px) {
+    @media (max-width: 1024px) {
       .hero-grid,
-      .intro-grid,
       .featured-grid,
-      .why-grid,
+      .trust-grid,
       .closing-grid {
         grid-template-columns: 1fr 1fr;
       }
-
-      .mini-brand-wrap {
-        grid-template-columns: 260px 1fr;
-      }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 820px) {
       .hero-grid,
-      .mini-brand-wrap,
-      .intro-grid,
       .featured-grid,
-      .why-grid,
-      .closing-grid,
-      .intro-points {
+      .trust-grid,
+      .closing-grid {
         grid-template-columns: 1fr;
       }
 
-      .category-panel {
+      .homepage-link-card {
         grid-template-columns: 1fr;
       }
 
-      .category-image {
-        height: 170px;
+      .card-side-image-wrap,
+      .card-middle-text {
+        min-height: 120px;
       }
 
-      .hero-visual-inner img {
-        min-height: 300px;
-      }
-
-      .brand-logo-box img {
-        max-width: 190px;
+      .top-logo-box {
+        max-width: 180px;
       }
     }
 
     @media (max-width: 640px) {
       .hero-copy,
-      .glass-panel,
-      .step-card,
-      .closing-card,
-      .brand-strip {
+      .mini-info-card,
+      .collections-intro-card,
+      .trust-panel,
+      .closing-card {
         padding: 22px 18px;
+      }
+
+      .top-banner-box {
+        padding: 10px;
       }
 
       .hero-actions {
@@ -573,30 +439,20 @@
       .hero-title {
         font-size: clamp(1.8rem, 9vw, 2.8rem);
       }
-
-      .feature-card img {
-        height: 170px;
-      }
-
-      .category-copy strong {
-        letter-spacing: 0.1em;
-      }
     }
   </style>
 </head>
 <body class="homepage-shell">
   <div class="spore-field" aria-hidden="true">
-    <span class="spore" style="left:4%; animation-duration:15s; animation-delay:-2s; --drift:16px;"></span>
-    <span class="spore" style="left:10%; animation-duration:18s; animation-delay:-8s; --drift:-18px;"></span>
-    <span class="spore" style="left:18%; animation-duration:20s; animation-delay:-4s; --drift:22px;"></span>
-    <span class="spore" style="left:27%; animation-duration:17s; animation-delay:-11s; --drift:-16px;"></span>
-    <span class="spore" style="left:36%; animation-duration:22s; animation-delay:-6s; --drift:18px;"></span>
-    <span class="spore" style="left:46%; animation-duration:19s; animation-delay:-14s; --drift:-20px;"></span>
-    <span class="spore" style="left:55%; animation-duration:23s; animation-delay:-5s; --drift:15px;"></span>
-    <span class="spore" style="left:64%; animation-duration:18s; animation-delay:-12s; --drift:-17px;"></span>
-    <span class="spore" style="left:74%; animation-duration:21s; animation-delay:-9s; --drift:20px;"></span>
-    <span class="spore" style="left:83%; animation-duration:17s; animation-delay:-3s; --drift:-14px;"></span>
-    <span class="spore" style="left:92%; animation-duration:20s; animation-delay:-10s; --drift:16px;"></span>
+    <span class="spore" style="left:5%; animation-duration:16s; animation-delay:-2s; --drift:14px;"></span>
+    <span class="spore" style="left:12%; animation-duration:19s; animation-delay:-8s; --drift:-16px;"></span>
+    <span class="spore" style="left:20%; animation-duration:17s; animation-delay:-4s; --drift:18px;"></span>
+    <span class="spore" style="left:31%; animation-duration:22s; animation-delay:-10s; --drift:-15px;"></span>
+    <span class="spore" style="left:43%; animation-duration:18s; animation-delay:-6s; --drift:16px;"></span>
+    <span class="spore" style="left:56%; animation-duration:23s; animation-delay:-12s; --drift:-18px;"></span>
+    <span class="spore" style="left:68%; animation-duration:17s; animation-delay:-5s; --drift:14px;"></span>
+    <span class="spore" style="left:79%; animation-duration:20s; animation-delay:-9s; --drift:-14px;"></span>
+    <span class="spore" style="left:91%; animation-duration:18s; animation-delay:-3s; --drift:12px;"></span>
   </div>
 
   <div class="bg-orb orb-1"></div>
@@ -626,25 +482,36 @@
   </header>
 
   <main>
+    <section class="top-brand-section">
+      <div class="container">
+        <div class="top-brand-wrap">
+          <div class="glass-panel top-logo-box">
+            <img src="images/mainLogoImage.jpg" alt="FatFungi logo" />
+          </div>
+
+          <div class="glass-panel top-banner-box">
+            <img src="images/fatFungiMainBanner.jpg" alt="FatFungi main banner" />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="hero-section">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-panel hero-copy">
-            <span class="hero-kicker">Premium mushroom cultivation gear</span>
-
+            <span class="section-kicker">Premium mushroom cultivation gear</span>
             <h1 class="hero-title">
-              FatFungi for
-              <span>growers with taste.</span>
+              Simple to browse.
+              <span>Easy to start.</span>
             </h1>
-
             <p>
-              Premium mushroom grow kits, sterile supplies and cultivation essentials with a darker,
-              trippier edge. Clean products. Better vibes. Less boring lab-store energy.
+              FatFungi is built for growers who want premium mushroom cultivation supplies without the page feeling
+              overcrowded, confusing or harsh on the eyes.
             </p>
-
             <p>
-              Start simple, build your shelf, or stock up for the next run. FatFungi is made for growers
-              who want the whole thing to feel smoother, cleaner and way more exciting.
+              Start with a kit, stock up on sterile grain, grab your spores or build out your setup with cultivation
+              supplies and substrates.
             </p>
 
             <div class="hero-actions">
@@ -653,82 +520,36 @@
             </div>
           </div>
 
-          <div class="hero-panel hero-visual">
-            <div class="hero-visual-inner">
-              <img
-                src="images/fatFungiMainBanner.jpg"
-                alt="FatFungi premium mushroom grow kits"
-              />
-              <div class="hero-visual-badge">
-                <strong>Grow kit energy</strong>
-                <span>Clean starts, solid stock and a homepage that finally feels alive.</span>
-              </div>
+          <div class="hero-side-stack">
+            <div class="glass-panel mini-info-card">
+              <span class="section-kicker">For newcomers</span>
+              <h3>Start with the easiest path.</h3>
+              <p>
+                All in one kits are the cleanest way to begin and the smoothest route into your first grow.
+              </p>
+            </div>
+
+            <div class="glass-panel mini-info-card">
+              <span class="section-kicker">For growers</span>
+              <h3>Restock fast and keep moving.</h3>
+              <p>
+                Pick up sterile grain, substrates, spores and cultivation essentials without digging through clutter.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mini-brand-section">
+    <section class="collections-intro-section">
       <div class="container">
-        <div class="mini-brand-wrap">
-          <div class="glass-panel brand-logo-box">
-            <img
-              src="images/mainLogoImage.jpg"
-              alt="FatFungi logo"
-            />
-          </div>
-
-          <div class="brand-strip">
-            <span class="section-kicker">The FatFungi vibe</span>
-            <h2>A premium grow store with cosmic, hazy, proper-stoner atmosphere.</h2>
-            <p>
-              FatFungi blends cultivation essentials with a dreamy dark presentation, so the store feels
-              more like a world you want to step into rather than a dry product list.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="intro-strip-section">
-      <div class="container">
-        <div class="intro-grid">
-          <div class="glass-panel">
-            <span class="section-kicker">What we do</span>
-            <h2>Everything you need to start growing, restocking and levelling up your setup.</h2>
-            <p>
-              From all in one kits to sterile grain, substrates, spores and cultivation supplies,
-              FatFungi is here for first-timers, repeat growers and anyone trying to make their setup feel
-              more dialled-in.
-            </p>
-
-            <div class="intro-points">
-              <div class="intro-point">
-                <strong>Cleaner starts</strong>
-                <span>Simple product paths that make starting easier and less chaotic.</span>
-              </div>
-              <div class="intro-point">
-                <strong>Better restocks</strong>
-                <span>Reliable sterile gear and cultivation extras when you need to top up fast.</span>
-              </div>
-              <div class="intro-point">
-                <strong>More atmosphere</strong>
-                <span>A premium dark style that actually matches the culture around the hobby.</span>
-              </div>
-              <div class="intro-point">
-                <strong>Built to expand</strong>
-                <span>A homepage structure that feels like a real landing page, not just a list.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel intro-banner-box">
-            <img
-              src="images/fatFungiMainBanner.jpg"
-              alt="FatFungi feature banner"
-            />
-          </div>
+        <div class="glass-panel collections-intro-card">
+          <span class="section-kicker">Welcome to FatFungi</span>
+          <h2>A cleaner homepage with a better flow.</h2>
+          <p>
+            The brand comes first, then the banner, then a simple path into the shop. This keeps the page easier for
+            new visitors, cleaner for buyers and much calmer overall while still keeping the trippy premium vibe.
+          </p>
         </div>
       </div>
     </section>
@@ -736,31 +557,29 @@
     <section class="featured-section">
       <div class="container">
         <div class="featured-heading">
-          <span class="section-kicker">Best ways to begin</span>
-          <h2>Three easy ways into the FatFungi world.</h2>
+          <span class="section-kicker">Best places to begin</span>
+          <h2>Three easy starting points.</h2>
           <p>
-            Whether you want a simple first run, a quick refill of sterile stock, or the parts to build
-            your own setup, start here.
+            Whether you want the simplest first grow, sterile stock for your next run or the extras that complete the setup,
+            start here.
           </p>
         </div>
 
         <div class="featured-grid">
           <div class="feature-card">
-            <img src="images/aiokOne.jpg" alt="All in one grow kits" />
+            <img src="images/aiokOne.jpg" alt="All in one kits" />
             <strong>All In One Kits</strong>
             <p>
-              The smoothest way to get going. Cleaner, easier and ideal for growers who want a simpler
-              route into the hobby.
+              Beginner-friendly, cleaner and the easiest route into the hobby.
             </p>
             <a href="all-in-one-kits.html">Explore kits</a>
           </div>
 
           <div class="feature-card">
-            <img src="images/sgOne.jpg" alt="Sterile grain products" />
+            <img src="images/sgOne.jpg" alt="Sterile grain" />
             <strong>Sterile Grain</strong>
             <p>
-              Reliable grain options for growers who already know the vibe and want strong building blocks
-              for the next cycle.
+              Reliable grain options for growers building stronger, cleaner runs.
             </p>
             <a href="grain-spawn.html">Shop grain</a>
           </div>
@@ -769,7 +588,7 @@
             <img src="images/csOne.jpg" alt="Cultivation supplies" />
             <strong>Cultivation Supplies</strong>
             <p>
-              The extras, the support kit, the little things that stop the grow room feeling half-built.
+              The support gear and practical extras that keep the setup complete.
             </p>
             <a href="cultivation-supplies.html">See supplies</a>
           </div>
@@ -777,183 +596,136 @@
       </div>
     </section>
 
-    <section class="categories-section" id="shop-categories">
+    <section class="homepage-card-stack" id="shop-categories">
       <div class="container">
-        <div class="categories-wrap">
-          <div class="categories-heading">
-            <span class="section-kicker">Shop by collection</span>
-            <h2>Pick your lane and build your next grow properly.</h2>
-            <p>
-              Explore the full FatFungi product range across kits, sterile components, substrates, spores
-              and cultivation support gear.
-            </p>
-          </div>
-
-          <a href="all-in-one-kits.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/aiokOne.jpg" alt="All In One Kits Left" />
-            </div>
-            <div class="category-copy">
-              <strong>All In One Kits</strong>
-              <span>Simple, clean and beginner-friendly. A solid first stop for fast starts.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/aiokTwo.jpg" alt="All In One Kits Right" />
-            </div>
-          </a>
-
-          <a href="spore-syringes.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/ssOne.jpg" alt="Spore Syringes Left" />
-            </div>
-            <div class="category-copy">
-              <strong>Spore Syringes</strong>
-              <span>For genetics, experimentation and taking the next step with intention.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/ssTwo.jpg" alt="Spore Syringes Right" />
-            </div>
-          </a>
-
-          <a href="fruit-in-bag-kits.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/fibkOne.jpg" alt="Fruit In Bag Kits Left" />
-            </div>
-            <div class="category-copy">
-              <strong>Fruit In Bag Kits</strong>
-              <span>Contained, convenient and built for a smoother route to the fun bit.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/fibkTwo.jpg" alt="Fruit In Bag Kits Right" />
-            </div>
-          </a>
-
-          <a href="grain-spawn.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/sgOne.jpg" alt="Sterile Grain Left" />
-            </div>
-            <div class="category-copy">
-              <strong>Sterile Grain</strong>
-              <span>Dependable grain options for stronger runs and cleaner inoculations.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/sgOne.jpg" alt="Sterile Grain Right" />
-            </div>
-          </a>
-
-          <a href="pf-tek-substrates.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/pfTekOne.jpg" alt="PF Tek Left" />
-            </div>
-            <div class="category-copy">
-              <strong>PF Tek</strong>
-              <span>Classic, simple and still a favourite path for many growers.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/pfTekOne.jpg" alt="PF Tek Right" />
-            </div>
-          </a>
-
-          <a href="sterile-substrates.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/sterSubOne.jpg" alt="Sterile Substrates Left" />
-            </div>
-            <div class="category-copy">
-              <strong>Sterile Substrates</strong>
-              <span>High-quality substrate options for building out cleaner fruiting setups.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/sterSubOne.jpg" alt="Sterile Substrates Right" />
-            </div>
-          </a>
-
-          <a href="cultivation-supplies.html" class="category-panel">
-            <div class="category-image">
-              <img src="images/csOne.jpg" alt="Cultivation Supplies Left" />
-            </div>
-            <div class="category-copy">
-              <strong>Cultivation Supplies</strong>
-              <span>Support gear, add-ons and the practical pieces that complete the setup.</span>
-            </div>
-            <div class="category-image">
-              <img src="images/csOne.jpg" alt="Cultivation Supplies Right" />
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="why-section">
-      <div class="container">
-        <div class="why-grid">
-          <div class="step-card">
-            <strong>Why FatFungi</strong>
-            <h3>Premium look</h3>
-            <p>
-              Dark, dreamy and trippy without drowning the products. The store actually feels like a brand.
-            </p>
-          </div>
-
-          <div class="step-card">
-            <strong>Why FatFungi</strong>
-            <h3>Cleaner journey</h3>
-            <p>
-              The page now guides people from vibe to products to categories in a much more natural order.
-            </p>
-          </div>
-
-          <div class="step-card">
-            <strong>Why FatFungi</strong>
-            <h3>More trust</h3>
-            <p>
-              Extra copy, stronger sections and clearer structure make it feel more like a serious landing page.
-            </p>
-          </div>
-
-          <div class="step-card">
-            <strong>Why FatFungi</strong>
-            <h3>Room to grow</h3>
-            <p>
-              This layout gives you a base for adding testimonials, product drops, blogs or featured promos later.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="steps-section">
-      <div class="container">
-        <div class="featured-heading">
-          <span class="section-kicker">How the homepage now flows</span>
-          <h2>A proper landing page journey.</h2>
+        <div class="categories-heading">
+          <span class="section-kicker">Shop by collection</span>
+          <h2>Pick your lane and build your next grow properly.</h2>
           <p>
-            The structure now leads people through brand, trust, featured entry points and the full shop range.
+            Explore the full FatFungi range across kits, spores, sterile components, substrates and cultivation support gear.
           </p>
         </div>
 
-        <div class="steps-grid why-grid">
-          <div class="step-card">
-            <strong>01</strong>
-            <h3>Catch attention</h3>
-            <p>The hero sets the tone straight away and immediately looks more premium.</p>
+        <div class="card-stack-wrap">
+          <a href="all-in-one-kits.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/aiokOne.jpg" alt="All In One Kits Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              ALL IN ONE KITS
+              <small>Simple, clean and beginner-friendly.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/aiokTwo.jpg" alt="All In One Kits Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="spore-syringes.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/ssOne.jpg" alt="Spore Syringes Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              SPORE SYRINGES
+              <small>For genetics, experimentation and next-step growing.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/ssTwo.jpg" alt="Spore Syringes Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="fruit-in-bag-kits.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/fibkOne.jpg" alt="Fruit In Bag Kits Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              FRUIT IN BAG KITS
+              <small>Contained, convenient and built for a smoother route.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/fibkTwo.jpg" alt="Fruit In Bag Kits Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="grain-spawn.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/sgOne.jpg" alt="Sterile Grain Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              STERILE GRAIN
+              <small>Dependable grain for stronger runs and cleaner inoculations.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/sgOne.jpg" alt="Sterile Grain Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="pf-tek-substrates.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/pfTekOne.jpg" alt="PF Tek Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              PF TEK
+              <small>Classic, simple and still a favourite for many growers.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/pfTekOne.jpg" alt="PF Tek Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="sterile-substrates.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/sterSubOne.jpg" alt="Sterile Substrates Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              STERILE SUBSTRATES
+              <small>Substrate options for clean fruiting setups and smoother grows.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/sterSubOne.jpg" alt="Sterile Substrates Right" class="card-side-image" />
+            </div>
+          </a>
+
+          <a href="cultivation-supplies.html" class="homepage-link-card">
+            <div class="card-side-image-wrap">
+              <img src="images/csOne.jpg" alt="Cultivation Supplies Left" class="card-side-image" />
+            </div>
+            <div class="card-middle-text">
+              CULTIVATION SUPPLIES
+              <small>Support gear, add-ons and the extras that complete the setup.</small>
+            </div>
+            <div class="card-side-image-wrap">
+              <img src="images/csOne.jpg" alt="Cultivation Supplies Right" class="card-side-image" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-panel">
+            <span class="section-kicker">Clearer</span>
+            <h3>Easier on the eyes</h3>
+            <p>
+              Less chaos at the top, better spacing and a much calmer first impression.
+            </p>
           </div>
 
-          <div class="step-card">
-            <strong>02</strong>
-            <h3>Explain the brand</h3>
-            <p>The smaller logo section and intro blocks tell people what FatFungi actually is.</p>
+          <div class="trust-panel">
+            <span class="section-kicker">Simpler</span>
+            <h3>Better for newcomers</h3>
+            <p>
+              Brand first, quick intro second, products after. Much easier for first-time visitors.
+            </p>
           </div>
 
-          <div class="step-card">
-            <strong>03</strong>
-            <h3>Offer easy entry points</h3>
-            <p>Featured product routes help people find a starting point before the full range.</p>
-          </div>
-
-          <div class="step-card">
-            <strong>04</strong>
-            <h3>Push into collections</h3>
-            <p>The full category stack keeps the store feel while still looking much more refined.</p>
+          <div class="trust-panel">
+            <span class="section-kicker">Stronger</span>
+            <h3>Proper landing page flow</h3>
+            <p>
+              It now feels like a real homepage rather than everything competing at the top.
+            </p>
           </div>
         </div>
       </div>
@@ -963,11 +735,10 @@
       <div class="container">
         <div class="closing-grid">
           <div class="closing-card">
-            <span class="section-kicker">Start simple</span>
-            <h2>New to growing?</h2>
+            <span class="section-kicker">New here?</span>
+            <h2>Start simple with a grow kit.</h2>
             <p>
-              Begin with all in one kits, then work your way into grain, substrate and supporting supplies
-              as your confidence grows.
+              The easiest way into FatFungi is through the all in one kits collection.
             </p>
             <div class="hero-actions">
               <a href="all-in-one-kits.html" class="hero-btn">Start with kits</a>
@@ -975,11 +746,10 @@
           </div>
 
           <div class="closing-card">
-            <span class="section-kicker">Build the shelf</span>
-            <h2>Already in the game?</h2>
+            <span class="section-kicker">Already growing?</span>
+            <h2>Restock your setup fast.</h2>
             <p>
-              Restock your sterile grain, substrate options and cultivation supplies so your next run feels
-              smoother from start to finish.
+              Browse grain, spores, substrates and cultivation supplies for your next run.
             </p>
             <div class="hero-actions">
               <a href="cultivation-supplies.html" class="hero-btn-alt">Browse supplies</a>
